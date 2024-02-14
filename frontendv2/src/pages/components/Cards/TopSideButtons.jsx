@@ -34,7 +34,7 @@ function TopSideButtons({ onRefresh ,pokeTotal }) {
           httpMethod: 'POST',
           type: 'Create',
           body: {
-            Case_id: `ER-${pokeTotal + 1}`,
+            Case_id: `Mission-${pokeTotal + 1}`,
             Details: {
               PatientName: form.patientFirstName+" "+form.patientLastName,
               Service: form.service,
