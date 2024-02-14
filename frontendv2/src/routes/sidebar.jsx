@@ -26,17 +26,17 @@ const submenuIconClasses = `h-5 w-5`;
 const routes = [
 
   {
-    path: '/app/dashboard',
+    path: '/dashboard',
     icon: <Squares2X2Icon className={iconClasses}/>, 
     name: 'Dashboard',
   },
   {
-    path: '/app/booking', // url
+    path: '/booking', // url
     icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
     name: 'Booking', // name that appear in Sidebar
   },
   {
-    path: '/app/activities', // url
+    path: '/activities', // url
     icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
     name: 'Activities', // name that appear in Sidebar
   },
