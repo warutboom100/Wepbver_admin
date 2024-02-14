@@ -1,4 +1,4 @@
 [[redirects]]
-form ="/*"
+form ="/app/*"
 to = "/index.html"
 status = 200
