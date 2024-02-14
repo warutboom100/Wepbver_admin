@@ -1,10 +1,10 @@
 import {React,Suspense ,lazy} from 'react'
-import Header from "./Header"
-import routes from '../routes'
+import Header from "../Header"
+import routes from '../../routes'
 import { useEffect, useRef } from "react"
 import { NavLink,  Routes, Link , useLocation, Route} from 'react-router-dom'
 import { useParams } from 'react-router-dom';
-import SuspenseContent from "./SuspenseContent"
+import SuspenseContent from "../SuspenseContent"
 
 
 

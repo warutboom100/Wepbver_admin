@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink,  Routes, Link , useLocation} from 'react-router-dom'
 import XMarkIcon  from '@heroicons/react/24/outline/XMarkIcon'
-import routes from '../routes/sidebar'
-import SidebarSubmenu from './SidebarSubmenu';
+import routes from '../../routes/sidebar'
+import SidebarSubmenu from '../SidebarSubmenu';
 function LeftSidebar() {
   const location = useLocation();
   const close = (e) => {
@@ -16,7 +16,7 @@ function LeftSidebar() {
         <button class="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden" onClick={() => close()}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-5 inline-block w-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        <li className="mb-2 font-semibold text-xl"><Link to={'/app/'}><img className="mask mask-squircle w-10" src="/logo192.png" alt="DashWind Logo"/>BVER</Link></li>
+        <li className="mb-2 font-semibold text-xl"><Link to={'/app/'}><img className="mask mask-squircle w-10" src="/doctors.png" alt="DashWind Logo"/>BVER</Link></li>
         {
           routes.map((route, k) => {
             return(
