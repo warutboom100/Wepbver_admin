@@ -13,7 +13,7 @@ import UserGroupIcon  from '@heroicons/react/24/outline/UserGroupIcon'
 import UsersIcon  from '@heroicons/react/24/outline/UsersIcon'
 import CircleStackIcon  from '@heroicons/react/24/outline/CircleStackIcon'
 import CreditCardIcon  from '@heroicons/react/24/outline/CreditCardIcon'
-import LeftSidebar from "../containers/pages/LeftSidebar"
+import LeftSidebar from "./components/LeftSidebar"
 import { useEffect, useState ,useRef} from "react";
 import axios from 'axios';
 

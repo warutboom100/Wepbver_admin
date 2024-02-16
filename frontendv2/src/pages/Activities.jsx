@@ -2,7 +2,7 @@ import React from 'react';
 import TitleCard from './components/Cards/TitleCard';
 import { useEffect, useState ,useRef} from "react";
 import axios from 'axios';
-import LeftSidebar from "../containers/pages/LeftSidebar"
+import LeftSidebar from "./components/LeftSidebar"
 import FunnelIcon from '@heroicons/react/24/outline/FunnelIcon';
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 import SearchBar from "./components/Cards/SearchBar";

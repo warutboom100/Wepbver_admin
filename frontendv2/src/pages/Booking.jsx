@@ -5,7 +5,7 @@ import TopSideButtons from './components/Cards/TopSideButtons';
 import TrashIcon from '@heroicons/react/24/outline/TrashIcon'
 import Header from "../containers/Header"
 import Modal from './components/Cards/Model_del';
-import LeftSidebar from "../containers/pages/LeftSidebar"
+import LeftSidebar from "./components/LeftSidebar"
 function Booking() {
   const [poke, setPoke] = useState("");
   const [loading, setLoading] = useState(false);
