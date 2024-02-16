@@ -18,14 +18,18 @@ function Login(){
         e.preventDefault()
         setErrorMessage("")
 
-        if(loginObj.emailId.trim() === "")return setErrorMessage("Admin Id is required! (use any value)")
+        if(loginObj.emailId.trim() === "")return setErrorMessage("AdminId is required! (use any value)")
         if(loginObj.password.trim() === "")return setErrorMessage("Password is required! (use any value)")
+        if (loginObj.password.trim() !== "admin5678" || loginObj.emailId.trim() !== "admin1234") {
+            return setErrorMessage("AdminId or Password incorrect");
+        }
+        
         if(loginObj.emailId.trim() === "admin1234" && loginObj.password.trim() === "admin5678"){
             setLoading(true)
             // Call API to check user credentials and save token in localstorage
             localStorage.setItem("token", "DumyTokenHere")
             setLoading(false)
-            window.location.href = '/app/welcome'
+            window.location.href = '/app/dashboard'
         }
        
     }

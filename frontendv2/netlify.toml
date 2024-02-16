@@ -1,4 +1,0 @@
-[[redirects]]
-form ="/app/*"
-to = "/index.html"
-status = 200

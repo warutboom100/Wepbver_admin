@@ -1,7 +1,7 @@
 import DashboardStats from './components/DashboardStats'
 import AmountStats from './components/AmountStats'
 import PageStats from './components/PageStats'
-
+import Header from "../containers/Header"
 import LineChart from './components/LineChart'
 import Map from './components/Map'
 import BarChart from './components/BarChart'
@@ -13,12 +13,13 @@ import UserGroupIcon  from '@heroicons/react/24/outline/UserGroupIcon'
 import UsersIcon  from '@heroicons/react/24/outline/UsersIcon'
 import CircleStackIcon  from '@heroicons/react/24/outline/CircleStackIcon'
 import CreditCardIcon  from '@heroicons/react/24/outline/CreditCardIcon'
-
-import { useEffect, useState } from "react";
+import LeftSidebar from "../containers/pages/LeftSidebar"
+import { useEffect, useState ,useRef} from "react";
 import axios from 'axios';
 
 
 function Dashboard() {
+  const mainContentRef = useRef(null);
   const [poke, setPoke] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -50,27 +51,39 @@ function Dashboard() {
   ]
   return (
     <>
-    <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
-                {
-                    statsData.map((d, k) => {
-                        return (
-                            <DashboardStats key={k} {...d} colorIndex={k}/>
-                        )
-                    })
-                }
+    <div className="drawer  lg:drawer-open">
+      <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content flex flex-col ">
+          <Header />
+          <main className="flex-1 overflow-y-auto md:pt-4 pt-4 px-6  bg-base-200" ref={mainContentRef}>
+            <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
+                        {
+                            statsData.map((d, k) => {
+                                return (
+                                    <DashboardStats key={k} {...d} colorIndex={k}/>
+                                )
+                            })
+                        }
+            </div>
+            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
+                <Map orderData={poke.BuildingMap} />
+                <BarChart />
+            </div>
+            <div className="grid lg:grid-cols-2 mt-10 grid-cols-1 gap-6">
+                <AmountStats availableUsers={poke.AmountStats?.UserTopScore} Score={poke.AmountStats?.Score}/>
+                <PageStats Pop={poke.PageStats?.PopularLocation} Used={poke.PageStats?.Totalused}/>
+            </div>
+            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
+                <UserChannels User ={poke.UserChannels}/>
+                <DoughnutChart Donut ={poke.DoughnutChart}/>
+            </div>
+          </main>
+        
+        </div>
+        <LeftSidebar/>
     </div>
-    <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-        <Map orderData={poke.BuildingMap} />
-        <BarChart />
-    </div>
-    <div className="grid lg:grid-cols-2 mt-10 grid-cols-1 gap-6">
-        <AmountStats availableUsers={poke.AmountStats?.UserTopScore} Score={poke.AmountStats?.Score}/>
-        <PageStats Pop={poke.PageStats?.PopularLocation} Used={poke.PageStats?.Totalused}/>
-    </div>
-    <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-        <UserChannels User ={poke.UserChannels}/>
-        <DoughnutChart Donut ={poke.DoughnutChart}/>
-    </div>
+    
+    
     </>
   )
 }

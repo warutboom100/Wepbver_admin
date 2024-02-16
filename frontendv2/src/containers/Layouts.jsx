@@ -1,6 +1,6 @@
 import React from 'react'
 import PageContents from './pages/Pagecontent'
-import LeftSidebar from "./pages/Leftsidebar"
+
 
 function Layouts() {
   return (
@@ -9,7 +9,7 @@ function Layouts() {
         <div className="drawer  lg:drawer-open">
             <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
             <PageContents/>
-            <LeftSidebar/>
+            {/* <LeftSidebar/> */}
             
         </div>
 

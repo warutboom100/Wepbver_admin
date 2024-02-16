@@ -1,16 +1,18 @@
 import React from 'react';
 import TitleCard from './components/Cards/TitleCard';
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useRef} from "react";
 import axios from 'axios';
-
+import LeftSidebar from "../containers/pages/LeftSidebar"
 import FunnelIcon from '@heroicons/react/24/outline/FunnelIcon';
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 import SearchBar from "./components/Cards/SearchBar";
+import Header from "../containers/Header"
 
 function Activities() {
     const [poke, setPoke] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const mainContentRef = useRef(null);
     useEffect(() => {
         let abortController = new AbortController();
         const loadPoke = async () => {
@@ -93,57 +95,67 @@ function Activities() {
     // Pass the required props to TitleCard
     return (
         <>
-            <TitleCard
-                title="Recent Activities"
-                topMargin="mt-2"
-                TopSideButtons={<TopSideButtons
-                    applySearch={applySearch}
-                    applyFilter={applyFilter}
-                    removeFilter={removeFilter}
-                />}
-            >
-            <div className="overflow-x-auto w-full">
-                <table className="table w-full">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Case Id</th>
-                        <th>Destination</th>
-                        <th>Active Order</th>
-                        <th>Pick Up Patient</th>
-                        <th>Drop Off</th>
+          <div className="drawer  lg:drawer-open">
+            <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
+              <div className="drawer-content flex flex-col ">
+                <Header />
+                <main className="flex-1 overflow-y-auto md:pt-4 pt-4 px-6  bg-base-200" ref={mainContentRef}>
+                <TitleCard
+                    title="Recent Activities"
+                    topMargin="mt-2"
+                    TopSideButtons={<TopSideButtons
+                        applySearch={applySearch}
+                        applyFilter={applyFilter}
+                        removeFilter={removeFilter}
+                    />}
+                >
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Case Id</th>
+                            <th>Destination</th>
+                            <th>Active Order</th>
+                            <th>Pick Up Patient</th>
+                            <th>Drop Off</th>
+                            
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                  {poke.filtered_items && poke.filtered_items.map((object, index) => (
+                    <tr key={index}>
                         
-                        
+                      <td><div class="flex items-center space-x-3">
+                                <div className="avatar placeholder">
+                                  <div className="bg-neutral text-neutral-content rounded-full w-8">
+                                    <span>{object.Activeby}</span>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div class="font-bold">{object.Activeby}</div>
+                                  
+                                </div>
+                              </div></td>
+                      <td>{object.Case_id}</td>
+                      <td>{object.Details.Destination}</td>
+                      <td>{object.Activetime}</td>
+                      <td>{object.Starttime}</td>
+                      <td>{object.Finishtime}</td>
+                      
+                      
                     </tr>
-                    </thead>
-                    <tbody>
-              {poke.filtered_items && poke.filtered_items.map((object, index) => (
-                <tr key={index}>
-                    
-                  <td><div class="flex items-center space-x-3">
-                            <div className="avatar placeholder">
-                              <div className="bg-neutral text-neutral-content rounded-full w-8">
-                                <span>{object.Activeby}</span>
-                              </div>
-                            </div>
-                            <div>
-                              <div class="font-bold">{object.Activeby}</div>
-                              
-                            </div>
-                          </div></td>
-                  <td>{object.Case_id}</td>
-                  <td>{object.Details.Destination}</td>
-                  <td>{object.Activetime}</td>
-                  <td>{object.Starttime}</td>
-                  <td>{object.Finishtime}</td>
-                  
-                  
-                </tr>
-              ))}
-            </tbody>
-                </table>
-            </div>
-            </TitleCard>
+                  ))}
+                </tbody>
+                    </table>
+                </div>
+                </TitleCard>
+                </main>
+              </div>
+              <LeftSidebar />
+          </div>
+            
         </>
     );
 }

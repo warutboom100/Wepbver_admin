@@ -3,6 +3,7 @@ import { NavLink,  Routes, Link , useLocation} from 'react-router-dom'
 import XMarkIcon  from '@heroicons/react/24/outline/XMarkIcon'
 import routes from '../../routes/sidebar'
 import SidebarSubmenu from '../SidebarSubmenu';
+
 function LeftSidebar() {
   const location = useLocation();
   const close = (e) => {
