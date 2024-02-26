@@ -1,5 +1,5 @@
 import React, { lazy, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 
 import checkAuth from './routes/auth';
 
@@ -14,12 +14,12 @@ export default function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
         
           {/* Place new routes over this */}
           <Route path="/app/*" element={<Layout />} />
 
-          <Route path="*" element={<Navigate to={token ? "/app/dashboard" : "/login"} replace />} />
+          <Route path="*" element={<NavLink to={token ? "/app/dashboard" : "/app/dashboard"} />} />
 
         </Routes>
       </Router>

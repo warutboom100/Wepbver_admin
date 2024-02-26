@@ -29,17 +29,17 @@ function BarChart(){
         labels,
         datasets: [
           {
-            label: 'task completed',
+            label: 'จำนวนภารกิจ',
             data: labels.map(() => { return Math.random() * 10 + 50 }),
             backgroundColor: 'rgba(255, 99, 132, 1)',
           },
           {
-            label: 'distance',
+            label: 'ระยะทางการเคลื่อนย้าย',
             data: labels.map(() => { return Math.random() * 10 + 30 }),
             backgroundColor: 'rgba(53, 162, 235, 1)',
           },
           {
-            label: 'time',
+            label: 'เวลาทำงาน',
             data: labels.map(() => { return Math.random() * 10 + 40 }),
             backgroundColor: 'rgba(255, 162 135, 1)',
           },
@@ -47,7 +47,7 @@ function BarChart(){
       };
 
     return(
-      <TitleCard title={"Daily Active Users"}>
+      <TitleCard title={"สถิติการทำงานรายวัน"}>
             <Bar options={options} data={data} />
       </TitleCard>
 

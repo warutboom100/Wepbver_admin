@@ -40,13 +40,13 @@ const Modal1 = ({ open, onClose, onSubmit }) => {
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={handleClose}>✕</button>
         </form>
         <h1 className="font-bold text-lg">Confirmation</h1>
-        <p className="py-4">Are you sure you want to delete this Task?</p>
+        <p className="py-4">คุณแน่ใจที่จะลบภารกิจใช่หรือไม่?</p>
         <div className="modal-action flex justify-end mt-4">
           <button className="btn btn-ghost mr-2" onClick={handleClose}>
-            Cancel
+            ยกเลิก
           </button>
           <button className="btn btn-primary px-6" onClick={handleSubmit}  type="submit">
-            Yes
+            ใช่
           </button>
         </div>
       </div>

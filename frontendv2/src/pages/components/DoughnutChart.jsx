@@ -62,7 +62,7 @@ ChartJS.register(ArcElement, Tooltip, Legend,
       };
     
       return (
-        <TitleCard title={'Orders by Location'}>
+        <TitleCard title={'สถิติการใช้สถานที่'}>
           <Doughnut options={options} data={data} />
         </TitleCard>
       );

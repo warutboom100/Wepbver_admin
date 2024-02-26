@@ -44,10 +44,10 @@ function Dashboard() {
         return () => abortController.abort();
     }, []);
   const statsData = [
-    {title : "Available Users", value : poke.DashboardStats?.AvailableUsers || 0, icon : <UserGroupIcon className='w-8 h-8'/>, description : poke.DashboardStats?.totalUsers + " all users"},
-    {title : "All Tasks", value : poke.DashboardStats?.AllTasks || 0, icon : <CreditCardIcon className='w-8 h-8'/>, description : "Current month"},
-    {title : "Pending Tasks", value : poke.DashboardStats?.PendingTasks || 0, icon : <CircleStackIcon className='w-8 h-8'/>, description : poke.DashboardStats?.PendingTasks+ " out of " +poke.DashboardStats?.AllTasks},
-    {title : "Active Users", value : poke.DashboardStats?.ActiveUsers || 0, icon : <UsersIcon className='w-8 h-8'/>, description : "↙ 300 (18%)"},
+    {title : "เจ้าหน้าที่พร้อมทำงาน", value : poke.DashboardStats?.AvailableUsers || 0, icon : <UserGroupIcon className='w-8 h-8'/>, description :" จากทั้งหมด "+poke.DashboardStats?.totalUsers},
+    {title : "ภารกิจทั้งหมด", value : poke.DashboardStats?.AllTasks || 0, icon : <CreditCardIcon className='w-8 h-8'/>, description : "วันนี้"},
+    {title : "ภารกิจที่รอดำเนินการ", value : poke.DashboardStats?.PendingTasks || 0, icon : <CircleStackIcon className='w-8 h-8'/>, description : poke.DashboardStats?.PendingTasks+ " จาก " +poke.DashboardStats?.AllTasks},
+    {title : "เจ้าหน้าที่ทำภารกิจอยู่", value : poke.DashboardStats?.ActiveUsers || 0, icon : <UsersIcon className='w-8 h-8'/>, description : "↙ 300 (18%)"},
   ]
   return (
     <>

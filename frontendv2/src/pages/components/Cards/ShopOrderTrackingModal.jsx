@@ -6,14 +6,14 @@ const ShopOrderTrackingModal = ({ onClose, orderDetails }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-8 rounded shadow-md relative">
         <span className="absolute top-2 right-2 text-lg cursor-pointer" onClick={onClose}>&times;</span>
-        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Mission Tracking</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">ติดตามภารกิจ</h2>
 
         <div className="p-4 max-w-md mx-auto pt-20 flow-root">
           <ul role="list" className="-mb-8">
-            <TimelineStep title="Activated" data={orderDetails} isFirst={1} step={Number(orderDetails.Details.Step)} time ={orderDetails.Timestamp}/>
-            <TimelineStep title="Received " data={orderDetails} isFirst={2} step={Number(orderDetails.Details.Step)-1} time ={orderDetails.Starttime}/>
-            <TimelineStep title="In progress Transported" data={orderDetails} isFirst={3} step={Number(orderDetails.Details.Step)-2}/>
-            <TimelineStep title="Patient Delivered" isLast={true} data={orderDetails} isFirst={4} step={Number(orderDetails.Details.Step)-3 } time ={orderDetails.Finishtime}/>
+            <TimelineStep title="ภารกิจรับโดย" data={orderDetails} isFirst={1} step={Number(orderDetails.Details.Step)} time ={orderDetails.Timestamp}/>
+            <TimelineStep title="รับผู้ป่วยชื่อ" data={orderDetails} isFirst={2} step={Number(orderDetails.Details.Step)-1} time ={orderDetails.Starttime}/>
+            <TimelineStep title="อยู่ดำเนินการขนย้ายผู้ป่วย" data={orderDetails} isFirst={3} step={Number(orderDetails.Details.Step)-2}/>
+            <TimelineStep title="ส่งผู่ป่วยเสร็จสิ้น" isLast={true} data={orderDetails} isFirst={4} step={Number(orderDetails.Details.Step)-3 } time ={orderDetails.Finishtime}/>
             {/* Add more timeline steps as needed */}
           </ul>
         </div>

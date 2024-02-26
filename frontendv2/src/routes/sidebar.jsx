@@ -13,19 +13,19 @@ const submenuIconClasses = `h-5 w-5`;
 const routes = [
 
   {
-    path: '/app/dashboard',
+    path: '/',
     icon: <Squares2X2Icon className={iconClasses}/>, 
-    name: 'Dashboard',
+    name: 'หน้าแสดงภาพรวม',
   },
   {
     path: '/app/booking', // url
     icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
-    name: 'Booking', // name that appear in Sidebar
+    name: 'ลงทะเบียนงาน', // name that appear in Sidebar
   },
   {
     path: '/app/activities', // url
     icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
-    name: 'Activities', // name that appear in Sidebar
+    name: 'ประวัติการทำงาน', // name that appear in Sidebar
   }
   
 ]

@@ -7,16 +7,16 @@ import React from 'react';
 function UserChannels({User}){
     
     return(
-        <TitleCard title={"User Location"}>
+        <TitleCard title={"สถานะของเจ้าหน้าที่"}>
              {/** Table Data */}
              <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                     <tr>
                         <th></th>
-                        <th className="normal-case">Name</th>
-                        <th className="normal-case">Status</th>
-                        <th className="normal-case">Recent Location</th>
+                        <th className="normal-case">ชื่อเจ้าหน้าที่</th>
+                        <th className="normal-case">สถานะ</th>
+                        <th className="normal-case">สถานที่ล่าสุด</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -24,15 +24,15 @@ function UserChannels({User}){
                         <tr key={index}>
                         <th>{index+1}</th>
                         <td>
-                          <div class="flex items-center space-x-3">
+                          <div className="flex items-center space-x-3">
                             <div className="avatar placeholder">
                               <div className="bg-neutral text-neutral-content rounded-full w-8">
                                 <span>{object.Firstname}</span>
                               </div>
                             </div>
                             <div>
-                              <div class="font-bold">{object.Firstname}</div>
-                              <div class="text-sm opacity-50">{object.Lastname}</div>
+                              <div className="font-bold">{object.Firstname}</div>
+                              <div className="text-sm opacity-50">{object.Lastname}</div>
                             </div>
                           </div>
                         </td>

@@ -31,7 +31,7 @@ function Map({ orderData }) {
 
   const getBackgroundColor = (priority,activeby) => {
     switch (priority) {
-      case 'Critical Emergency':
+      case 'ฉุกเฉิน':
         if(activeby == '-'){
           return '#DA483B';
         }
@@ -40,7 +40,7 @@ function Map({ orderData }) {
           return '#B8E0E3';
         }
 
-      case 'High Priority':
+      case 'สูง':
         if(activeby == '-'){
           return '#FF9E0F';
         }
@@ -48,7 +48,7 @@ function Map({ orderData }) {
         else {
           return '#B8E0E3';
         } // Yellow
-      case 'Medium Priority':
+      case 'ปานกลาง':
         if(activeby == '-'){
           return '#FFC718';
         }
@@ -56,7 +56,7 @@ function Map({ orderData }) {
         else {
           return '#B8E0E3';
         }e
-      case 'Low Priority':
+      case 'ปกติ':
         if(activeby == '-'){
           return '#1CA45C';
         }
@@ -73,7 +73,7 @@ function Map({ orderData }) {
   };
 
   return (
-    <TitleCard title="Building Map" topMargin="mt-2">
+    <TitleCard title="ติดตามสถานะภารกิจ" topMargin="mt-2">
       <div className="grid grid-cols-4 gap-4">
         {orderData ? (
           orderData.map((room) => (
@@ -87,7 +87,7 @@ function Map({ orderData }) {
             >
               <p className="text-lg font-semibold">{room.Details.Destination}</p>
               <p className={`text-sm ${room.Details.Priority === 'Occupied' ? 'text-red-500' : 'text-white'}`}>
-                Case Id: {room.Case_id}
+                JOB ID: {room.Case_id}
               </p>
               {userInRoom && userInRoom.roomId === room.Details.StartPoint && (
                 <p className="text-sm text-black">CLICK FOR DETAILS</p>

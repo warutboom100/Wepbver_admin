@@ -17,7 +17,7 @@ function Activities() {
         let abortController = new AbortController();
         const loadPoke = async () => {
           try {
-            setLoading(true);
+      setLoading(true);
             let response = await axios.get(`https://ik25o0qwj7.execute-api.ap-southeast-1.amazonaws.com/wepapp_admin/WKa9BnJm-MovementEvent/ActivityGet`, {
               signal: abortController.signal
             });
@@ -99,9 +99,9 @@ function Activities() {
             <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
               <div className="drawer-content flex flex-col ">
                 <Header />
-                <main className="flex-1 overflow-y-auto md:pt-4 pt-4 px-6  bg-base-200" ref={mainContentRef}>
+                <main className="flex-1 overflow-y-auto md:pt-4 pt-3 px-3  bg-base-200" ref={mainContentRef}>
                 <TitleCard
-                    title="Recent Activities"
+                    title="ประวัติการปฏิบัติภารกิจ"
                     topMargin="mt-2"
                     TopSideButtons={<TopSideButtons
                         applySearch={applySearch}
@@ -113,12 +113,12 @@ function Activities() {
                     <table className="table w-full">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Case Id</th>
-                            <th>Destination</th>
-                            <th>Active Order</th>
-                            <th>Pick Up Patient</th>
-                            <th>Drop Off</th>
+                            <th>รหัสเจ้าหน้าที่</th>
+                            <th>JOB Id</th>
+                            <th>ปลายทาง</th>
+                            <th>เวลารับภารกิจ</th>
+                            <th>เวลารับผู้ป่วย</th>
+                            <th>เวลาส่งผู้ป่วย</th>
                             
                             
                         </tr>
@@ -127,14 +127,14 @@ function Activities() {
                   {poke.filtered_items && poke.filtered_items.map((object, index) => (
                     <tr key={index}>
                         
-                      <td><div class="flex items-center space-x-3">
+                      <td><div className="flex items-center space-x-3">
                                 <div className="avatar placeholder">
-                                  <div className="bg-neutral text-neutral-content rounded-full w-8">
-                                    <span>{object.Activeby}</span>
+                                  <div className="bg-blue-200 text-neutral-content rounded-full w-8">
+                                    <span>{"ID"}</span>
                                   </div>
                                 </div>
                                 <div>
-                                  <div class="font-bold">{object.Activeby}</div>
+                                  <div className="font-bold">{object.Activeby}</div>
                                   
                                 </div>
                               </div></td>

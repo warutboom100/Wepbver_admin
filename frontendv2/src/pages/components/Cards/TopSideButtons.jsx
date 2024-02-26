@@ -34,7 +34,7 @@ function TopSideButtons({ onRefresh ,pokeTotal }) {
           httpMethod: 'POST',
           type: 'Create',
           body: {
-            Case_id: `Mission-${pokeTotal + 1}`,
+            Case_id: `Mission-${parseInt(pokeTotal) + 1}`,
             Details: {
               PatientName: form.patientFirstName+" "+form.patientLastName,
               Service: form.service,
@@ -45,10 +45,10 @@ function TopSideButtons({ onRefresh ,pokeTotal }) {
               Step: "0",
             },
             Equipments: {
-              Infusionpump: form.infusionPump,
-              Oxygentank: form.oxygenTank,
-              Stretcher: form.stretcher,
-              Walker: form.walker,
+              Staff1: form.staff1,
+              Staff2: form.staff2,
+              Stretcher1: form.stretcher1,
+              Stretcher2: form.stretcher2,
               Wheelchair: form.wheelchair,
               Other: form.other,
             },
@@ -79,9 +79,7 @@ function TopSideButtons({ onRefresh ,pokeTotal }) {
     <div className="inline-block float-right">
       <button
         className="btn px-6 btn-sm normal-case btn-primary"
-        onClick={() => setOpenModel(true)}
-      >
-        Add New
+        onClick={() => setOpenModel(true)}>เพิ่มภารกิจ
       </button>
       <Modal open={openModel} onClose={() => setOpenModel(false)} onSubmit={handleSubmit}/>
     </div>

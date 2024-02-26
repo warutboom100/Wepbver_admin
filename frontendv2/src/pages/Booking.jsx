@@ -6,6 +6,7 @@ import TrashIcon from '@heroicons/react/24/outline/TrashIcon'
 import Header from "../containers/Header"
 import Modal from './components/Cards/Model_del';
 import LeftSidebar from "./components/LeftSidebar"
+
 function Booking() {
   const [poke, setPoke] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,12 +19,28 @@ function Booking() {
   const [IndexData, setIndexData] = useState(0);
   const mainContentRef = useRef(null);
   const getDummyStatus = (index) => {
-        if(index === "Available")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-white text-gray-600">Available</div>
-        else if(index === "In Progress")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-blue-600 text-white dark:bg-blue-500">In Progress</div>
-        else if(index  === "Completed")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-teal-500 text-white">Completed</div>
-        else if(index  === "Declined")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-gray-800 text-white dark:bg-white dark:text-gray-800">Declined</div>
+        if(index === "Available")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-light text-gray-600">รอรับงาน</div>
+        else if(index === "In Progress")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-blue-600 text-white dark:bg-blue-500">กำลังดำเนินการ</div>
+        else if(index  === "Completed")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-teal-500 text-white">งานเสร็จสิ้น</div>
+        else if(index  === "Declined")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-gray-800 text-white dark:bg-white dark:text-gray-800">ยกเลิกงาน</div>
         else return <div className="badge badge-ghost">Loading...</div>
   }
+  const title_equ = (equipments) =>{
+    if (equipments.Stretcher1 === true) {
+      return "รถนอน พร้อมเจ้าหน้าที่ 1 ท่าน";
+    } else if (equipments.Stretcher2 === true) {
+      return "รถนอน พร้อมเจ้าหน้าที่ 2 ท่าน";
+    }else if (equipments.Staff1 === true) {
+      return "เจ้าหน้าที่ 1 ท่าน";
+    }else if (equipments.Staff2 === true) {
+      return "เจ้าหน้าที่ 2 ท่าน";
+    }else if (equipments.Wheelchair === true) {
+      return "รถนั่งเจ้าหน้าที่ 1";
+    } else {
+      return "อื่นๆ";
+    }
+  };
+
   const handleSubmit = async () => {
     
     try {
@@ -52,7 +69,7 @@ function Booking() {
       setLoading(false);
       setRefresh(!refresh);
       // console.log('DONE');
-    };
+    }
   };
   
   useEffect(() => {
@@ -75,26 +92,27 @@ function Booking() {
     loadPoke();
     return () => abortController.abort();
   }, [refresh]);
+  
   return (
     <>
       <div className="drawer  lg:drawer-open">
         <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col ">
           <Header />
-          <main className="flex-1 overflow-y-auto md:pt-4 pt-4 px-6  bg-base-200" ref={mainContentRef}>
-            <TitleCard title="Current Tasks" topMargin="mt-2" TopSideButtons={<TopSideButtons onRefresh={() => setRefresh(!refresh)} pokeTotal={poke.total} />}>
+          <main className="flex-1 overflow-y-auto md:pt-4 pt-3 px-3  bg-base-200" ref={mainContentRef}>
+            <TitleCard title="ภารกิจงานเคลื่อนย้าย" topMargin="mt-2" TopSideButtons={<TopSideButtons onRefresh={() => setRefresh(!refresh)} pokeTotal={poke.total} />}>
               <Modal open={ConfirmModel} onClose={() => setConfirmModel(false)} onSubmit={handleSubmit}/>
               <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>Case ID</th>
-                      <th>Location</th>
-                      <th>Patient Name</th>
-                      <th>Equipments</th>
-                      <th>Created At</th>
-                      <th>Status</th>
-                      <th>Active By</th>
+                      <th>JOB ID</th>
+                      <th>สถานที่</th>
+                      <th>ชื่อผู้ป่วย</th>
+                      <th>ประเภทการขอ</th>
+                      <th>ภารกิจสร้างเมื่อ</th>
+                      <th>สถานะภารกิจ</th>
+                      <th>เจ้าหน้าที่</th>
                       
                     </tr>
                   </thead>
@@ -104,29 +122,20 @@ function Booking() {
                       <tr key={index}>
                         
                         <td>
-                        <div class="flex items-center space-x-3">
+                        <div className="flex items-center space-x-3">
                           <div className="avatar placeholder">
-                          <div className="bg-neutral text-neutral-content rounded-full w-8">
-                            <span>AM</span>
+                          <div className="bg-blue-200 text-neutral-content rounded-full w-8">
+                            <span>ID</span>
                             </div>
                           </div>
                           <div>
-                            <div class="font-bold">{object.Case_id}</div>
+                            <div className="font-bold">{object.Case_id}</div>
                           </div>
                         </div>
                         </td>
                         <td>{object.Details.StartPoint+" --> "+object.Details.Destination}</td>
                         <td>{object.Details.PatientName}</td>
-                        <td>
-                        <ul>
-                          {Object.entries(object.Equipments).map(([equipment, quantity]) => (
-                            <li key={equipment}>
-                              {`${equipment}: ${quantity}`}
-                            </li>
-                          ))}
-                        </ul>
-
-                        </td>
+                        <td>{title_equ(object.Equipments)}</td>
                         <td>{object.Timestamp}</td>
                         <td>{getDummyStatus(object.Status)}</td>
                         <td>{object.Activeby}</td>

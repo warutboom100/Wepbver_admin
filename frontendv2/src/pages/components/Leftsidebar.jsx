@@ -15,9 +15,9 @@ function LeftSidebar() {
       <label htmlFor="left-sidebar-drawer" className="drawer-overlay"></label> 
       <ul className="menu  pt-2 w-80 bg-base-100 min-h-full   text-base-content">
         <button class="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden" onClick={() => close()}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-5 inline-block w-5">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" className="h-5 inline-block w-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        <li className="mb-2 font-semibold text-xl"><Link to={'/app/'}><img className="mask mask-squircle w-10" src="/Logo1.jpg" alt="DashWind Logo"/>BVER</Link></li>
+        <li className="mb-2 font-semibold text-xl"><Link to={'/'}><img className="mask mask-squircle w-10" src="/Logo1.jpg" alt="DashWind Logo"/>BVER</Link></li>
         {
           routes.map((route, k) => {
             return(
