@@ -8,7 +8,7 @@ const checkAuth = () => {
 
     if (!TOKEN && !isPublicPage) {
         // ใช้ NavLink ในการนำทางไปยังหน้า "/login" แทนการใช้ window.location.href
-        return <NavLink to="/login" />;
+        return ;
     } else {
         axios.defaults.headers.common['Authorization'] = `Bearer ${TOKEN}`;
 

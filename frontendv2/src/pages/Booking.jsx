@@ -3,9 +3,7 @@ import axios from 'axios';
 import TitleCard from './components/Cards/TitleCard';
 import TopSideButtons from './components/Cards/TopSideButtons';
 import TrashIcon from '@heroicons/react/24/outline/TrashIcon'
-import Header from "../containers/Header"
 import Modal from './components/Cards/Model_del';
-import LeftSidebar from "./components/LeftSidebar"
 
 function Booking() {
   const [poke, setPoke] = useState("");
@@ -98,9 +96,9 @@ function Booking() {
       <div className="drawer  lg:drawer-open">
         <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col ">
-          <Header />
+  
           <main className="flex-1 overflow-y-auto md:pt-4 pt-3 px-3  bg-base-200" ref={mainContentRef}>
-            <TitleCard title="ภารกิจงานเคลื่อนย้าย" topMargin="mt-2" TopSideButtons={<TopSideButtons onRefresh={() => setRefresh(!refresh)} pokeTotal={poke.total} />}>
+            <TitleCard title="ภารกิจงานเคลื่อนย้าย" topMargin="mt-2" TopSideButtons={<TopSideButtons onRefresh={() => setRefresh(!refresh)} pokeTotal={poke.total} pokeStaff={poke.staff}/>}>
               <Modal open={ConfirmModel} onClose={() => setConfirmModel(false)} onSubmit={handleSubmit}/>
               <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -113,7 +111,7 @@ function Booking() {
                       <th>ภารกิจสร้างเมื่อ</th>
                       <th>สถานะภารกิจ</th>
                       <th>เจ้าหน้าที่</th>
-                      
+                      <th></th>
                     </tr>
                   </thead>
                   
@@ -133,8 +131,8 @@ function Booking() {
                           </div>
                         </div>
                         </td>
-                        <td>{object.Details.StartPoint+" --> "+object.Details.Destination}</td>
-                        <td>{object.Details.PatientName}</td>
+                        <td>{object.Details.StartPoint+" → "+object.Details.Destination}</td>
+                        <td>{"["+object.Details.PatientHN+"] "+object.Details.PatientName}</td>
                         <td>{title_equ(object.Equipments)}</td>
                         <td>{object.Timestamp}</td>
                         <td>{getDummyStatus(object.Status)}</td>
@@ -150,7 +148,7 @@ function Booking() {
             </TitleCard>
           </main>
         </div>
-        <LeftSidebar/>
+        {/* <LeftSidebar/> */}
       </div>
       
     </>

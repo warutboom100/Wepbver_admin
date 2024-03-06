@@ -1,0 +1,52 @@
+.drawer-content {
+    padding: 20px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    /* เปลี่ยนสีเส้นขอบเป็นสีเทาอ่อน */
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    /* เปลี่ยนสีพื้นหลังของหัวตาราง */
+    font-weight: bold;
+    /* เพิ่มความหนาให้กับตัวหัวตาราง */
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.placeholder>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder>div>span {
+    font-size: 12px;
+    color: #666;
+    /* เปลี่ยนสีของข้อความใน avatar */
+}

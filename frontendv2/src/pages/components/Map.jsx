@@ -31,34 +31,34 @@ function Map({ orderData }) {
 
   const getBackgroundColor = (priority,activeby) => {
     switch (priority) {
-      case 'ฉุกเฉิน':
+      case '0':
         if(activeby == '-'){
-          return '#DA483B';
+          return '#FF6A5D';
         }
           
         else {
           return '#B8E0E3';
         }
 
-      case 'สูง':
-        if(activeby == '-'){
-          return '#FF9E0F';
+      case '1':
+        if(activeby != '-'){
+          return '#FFAE34';
         }
           
         else {
           return '#B8E0E3';
         } // Yellow
-      case 'ปานกลาง':
-        if(activeby == '-'){
-          return '#FFC718';
+      case '2':
+        if(activeby != '-'){
+          return '#FFD760';
         }
           
         else {
           return '#B8E0E3';
         }e
-      case 'ปกติ':
-        if(activeby == '-'){
-          return '#1CA45C';
+      case '3':
+        if(activeby != '-'){
+          return '#40D184';
         }
           
         else {
@@ -80,17 +80,17 @@ function Map({ orderData }) {
             <div
               key={room.id}
               className={`p-4 border cursor-pointer ${selectedRoom === room.Details.StartPoint ? 'bg-blue-200' : ''}`}
-              style={{ backgroundColor: getBackgroundColor(room.Details.Priority,room.Activeby) }}
+              style={{ backgroundColor: getBackgroundColor(room.Details.Step,room.Activeby) }}
               onClick={() => handleRoomClick(room.Details.StartPoint, room)}
               onMouseEnter={() => handleMouseEnter(room.Details.StartPoint)}
               onMouseLeave={handleMouseLeave}
             >
-              <p className="text-lg font-semibold">{room.Details.Destination}</p>
+              <p className="text-lg font-semibold">{room.Case_id}</p>
               <p className={`text-sm ${room.Details.Priority === 'Occupied' ? 'text-red-500' : 'text-white'}`}>
-                JOB ID: {room.Case_id}
+                {room.Details.Destination}
               </p>
               {userInRoom && userInRoom.roomId === room.Details.StartPoint && (
-                <p className="text-sm text-black">CLICK FOR DETAILS</p>
+                <p className="text-sm text-black">คลิ๊กเพื่อดูสถานะ</p>
               )}
             </div>
           ))

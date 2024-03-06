@@ -4,11 +4,11 @@ import './Modal.css'; // Import your CSS file for styling
 import patient from '../../../assets/patient.png'
 
 
-const Modal = ({ open, onClose, onSubmit }) => {
+const Modal = ({ open, onClose, onSubmit,pokeStaff }) => {
   const initialFormData = {
-    patientFirstName: '',
-    patientLastName: '',
-    service: 'Urgent Care',
+    patientHN: '',
+    patientName: '',
+    staff: '-',
     priority: 'ฉุกเฉิน',
     startpoint: 'จุดรวมพลชั้น1',
     destination: 'จุดรวมพลชั้น1',
@@ -21,9 +21,9 @@ const Modal = ({ open, onClose, onSubmit }) => {
     other: false,
   };
   const [formData, setFormData] = useState({
-    patientFirstName: '',
-    patientLastName: '',
-    service: 'Urgent Care',
+    patientHN: '',
+    patientName: '',
+    staff: '-',
     priority: 'ฉุกเฉิน',
     startpoint: 'จุดรวมพลชั้น1',
     destination: 'จุดรวมพลชั้น1',
@@ -100,11 +100,11 @@ const Modal = ({ open, onClose, onSubmit }) => {
               <span className="mr-2">
                 <img src={patient} alt="" height="16px" width="16px" />
               </span>
-              <span>ชื่อผู้ป่วย</span>
+              <span>ข้อมูลผู้ป่วย</span>
             </div>
 
             </label>
-            <input type="text" placeholder="ชื่อ" name="patientFirstName" value={formData.patientFirstName} onChange={handleChange} className="input input-bordered input-info w-full max-w-md" />
+            <input type="text" placeholder="รหัสHN" name="patientHN" value={formData.patientHN} onChange={handleChange} className="input input-bordered input-info w-full max-w-md" />
           </div> 
           <div className="form-control">
             <label className="label">
@@ -112,7 +112,7 @@ const Modal = ({ open, onClose, onSubmit }) => {
               <span className="mr-2"></span>
             </span>
             </label>
-            <input type="text" placeholder="นามสกุล" name="patientLastName" value={formData.patientLastName} onChange={handleChange} className="input input-bordered input-info w-full max-w-md" />
+            <input type="text" placeholder="ชื่อ-นามสกุล" name="patientName" value={formData.patientName} onChange={handleChange} className="input input-bordered input-info w-full max-w-md" />
           </div> 
           <div className="form-control">
             <label className="label">
@@ -157,6 +157,21 @@ const Modal = ({ open, onClose, onSubmit }) => {
           <div className="form-control">
             <label className="label">
               <span className="label-text text-base-content undefined">
+              <span className="mr-2">👨‍💼</span> เจ้าหน้าที่
+
+              </span>
+            </label>
+            <select className="select select-bordered select-info" name="staff" value={formData.staff} onChange={handleChange}>
+              <option>-</option>
+              {pokeStaff.map((item, index) => (
+                <option key={index}>{item}</option>
+              ))}
+            </select>
+
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-base-content undefined">
               <span className="mr-2">🚨</span> ระดับความสำคัญ
               </span>
             </label>
@@ -169,23 +184,7 @@ const Modal = ({ open, onClose, onSubmit }) => {
             </select>
           </div>
 
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text text-base-content undefined">
-              <span className="mr-2">📅</span> Service
-              </span>
-            </label>
-            <select className="select select-bordered select-info" name="service" value={formData.service} onChange={handleChange}>
-              <option>Urgent Care</option>
-              <option>Emergency Services</option>
-              <option>Routine Care</option>
-              <option>Outpatient Services</option>
-              <option>Scheduled appointments</option>
-              <option>Diagnostic Services </option>
-              <option>Extended Care</option>
-              <option>Walk-In Services</option>
-            </select>
-          </div>
+          
         </div>
         
 
@@ -197,50 +196,57 @@ const Modal = ({ open, onClose, onSubmit }) => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-1 mt-1">
           <div className="form-control">
             <label className="cursor-pointer label">
+            <input type="checkbox"  className="checkbox checkbox-info " name="stretcher1" checked={formData.stretcher1} onChange={handleChange}/>
             <span className="label-text text-base-content undefined">
               <span className="mr-2">🛌</span> รถนอนเจ้าหน้าที่ 1
             </span>
-            <input type="checkbox"  className="checkbox checkbox-info " name="stretcher1" checked={formData.stretcher1} onChange={handleChange}/>
+            
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
+              <input type="checkbox"  className="checkbox checkbox-info" name="staff1" checked={formData.staff1} onChange={handleChange}/>
             <span className="label-text text-base-content undefined">
               <span className="mr-2">🚶‍♂️</span>เจ้าหน้าที่ 1 ท่าน
             </span>
-              <input type="checkbox"  className="checkbox checkbox-info" name="staff1" checked={formData.staff1} onChange={handleChange}/>
+            
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
+              <input type="checkbox"  className="checkbox checkbox-info" name="wheelchair" checked={formData.wheelchair} onChange={handleChange}/>
             <span className="label-text text-base-content undefined">
               <span className="mr-2">♿️</span>รถนั่ง เจ้าหน้าที่ 1
             </span>
-              <input type="checkbox"  className="checkbox checkbox-info" name="wheelchair" checked={formData.wheelchair} onChange={handleChange}/>
+              
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
+              <input type="checkbox"  className="checkbox checkbox-info" name="stretcher2" checked={formData.stretcher2} onChange={handleChange}/>
             <span className="label-text text-base-content undefined">
               <span className="mr-2">🛌</span> รถนอนเจ้าหน้าที่ 2
             </span>
-              <input type="checkbox"  className="checkbox checkbox-info" name="stretcher2" checked={formData.stretcher2} onChange={handleChange}/>
+              
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
+              <input type="checkbox"  className="checkbox checkbox-info" name="staff2" checked={formData.staff2} onChange={handleChange}/>
             <span className="label-text text-base-content undefined">
               <span className="mr-2">🚶‍♂️🚶‍♂️</span>เจ้าหน้าที่ 2 ท่าน
             </span>
-              <input type="checkbox"  className="checkbox checkbox-info" name="staff2" checked={formData.staff2} onChange={handleChange}/>
+              
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
+            <input type="checkbox"  className="checkbox checkbox-info" name="other" checked={formData.other} onChange={handleChange}/>
             <span className="label-text text-base-content undefined">
-              <span className="mr-2">🔄</span> อื่นๆ
+             
+              <span className="mr-2">🔄 ประเภทขออื่นๆ</span>
             </span>
-              <input type="checkbox"  className="checkbox checkbox-info" name="other" checked={formData.other} onChange={handleChange}/>
+              
             </label>
           </div>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
+import { HashRouter } from 'react-router-dom'
+import App from "./App.jsx";
 import './index.css'
 import routes1 from './routes/index.jsx'
 import {
@@ -12,6 +13,9 @@ import {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={routes1} />
+    <HashRouter>
+      <App />
+    </HashRouter>
+    {/* <RouterProvider router={routes1} /> */}
   </React.StrictMode>,
 )

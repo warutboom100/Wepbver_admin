@@ -1,57 +1,81 @@
-// ShopOrderTrackingModal.jsx
+
 import React from 'react';
+import check from '../../../assets/check.png';
+import failed from '../../../assets/failed.png';
+import telemedicine from '../../../assets/telemedicine.png';
+import disabled from '../../../assets/disabled.png';
+import partnership from '../../../assets/partnership.png';
+import commit from '../../../assets/commit.png';
 
-const ShopOrderTrackingModal = ({ onClose, orderDetails }) => {
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-8 rounded shadow-md relative">
-        <span className="absolute top-2 right-2 text-lg cursor-pointer" onClick={onClose}>&times;</span>
-        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">ติดตามภารกิจ</h2>
-
-        <div className="p-4 max-w-md mx-auto pt-20 flow-root">
-          <ul role="list" className="-mb-8">
-            <TimelineStep title="ภารกิจรับโดย" data={orderDetails} isFirst={1} step={Number(orderDetails.Details.Step)} time ={orderDetails.Timestamp}/>
-            <TimelineStep title="รับผู้ป่วยชื่อ" data={orderDetails} isFirst={2} step={Number(orderDetails.Details.Step)-1} time ={orderDetails.Starttime}/>
-            <TimelineStep title="อยู่ดำเนินการขนย้ายผู้ป่วย" data={orderDetails} isFirst={3} step={Number(orderDetails.Details.Step)-2}/>
-            <TimelineStep title="ส่งผู่ป่วยเสร็จสิ้น" isLast={true} data={orderDetails} isFirst={4} step={Number(orderDetails.Details.Step)-3 } time ={orderDetails.Finishtime}/>
-            {/* Add more timeline steps as needed */}
-          </ul>
-        </div>
+const StepItem = ({ color, icon, title, description ,imgstep}) => (
+  <div className={`flex md:contents`}>
+    <div className={`col-start-2 col-end-4 mr-10 md:mx-auto relative`}>
+      <div className={`h-full w-6 flex items-center justify-center`}>
+        <div className={`h-full w-1 bg-${color} pointer-events-none`}></div>
+      </div>
+      <div className={`w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-${color} shadow text-center`}>
+        <img src={icon}></img>
       </div>
     </div>
-  );
-};
+    <div className={`bg-${color} col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full flex items-center`}>
+      <img src={imgstep} className="mr-4" style={{ width: '48px', height: '48px' }} alt="icon" />
+      <div>
+        <h3 className={`font-semibold text-lg mb-1`}>{title}</h3>
+        <p className={`leading-tight text-justify w-full`}>{description}</p>
+      </div>
+      
+    </div>
 
-const TimelineStep = ({ title, data, isFirst, isLast ,step,time}) => {
-    return (
-      <li>
-        <div className={`relative pb-8 ${isLast ? '' : 'mb-8'}`}>
-          {step>0&&!isLast && <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-green-200" aria-hidden="true"></span>}
-          <div className="relative flex space-x-3">
-            <div>
-              <span className={`h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white ${Number(step)>0 ? 'bg-green-500' : 'bg-gray-400'}`}>
-                {isLast ? (
-                  <svg className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                  </svg>
-                ) : (
-                  <img className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" src={isLast ? 'https://res.cloudinary.com/teepublic/image/private/s--AwgOGWhQ--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_auto,h_630,q_auto:good:420,w_630/v1615488250/production/designs/20135311_0.jpg' : 'https://c8.alamy.com/comp/2RC5DTJ/taking-off-plane-logo-2RC5DTJ.jpg'} alt="Timeline Icon" />
-                )}
-              </span>
-            </div>
-            <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
-              <div>
-                <p className="text-sm text-gray-500">{title} <a href="#" className="font-medium text-gray-900">{isLast ? '' : isFirst == 1 ?  `by ${data.Activeby}` : isFirst == 2? `Mr. ${data.Details.PatientName}`:``}</a></p>
-              </div>
-              <div className="whitespace-nowrap text-right text-sm text-gray-500">
-                <time dateTime="2020-09-30">{time}</time>
+  </div>
+);
+const ShopOrderTrackingModal = ({ onClose, orderDetails }) => {
+  return (
+    <>
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+        <div className="bg-white p-8 rounded-lg shadow-md relative max-w-3xl w-full">
+          <span className="absolute top-2 right-2 text-lg cursor-pointer" onClick={onClose}>&times;</span>
+          <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">ติดตามภารกิจ {orderDetails.Case_id}</h2>
+          <div className="p-4 mt-4">
+            <div className="container">
+              <div className="flex flex-col md:grid grid-cols-12 text-gray-50">
+                <StepItem
+                  color={Number(orderDetails.Details.Step)>0 ? 'green-500' : 'gray-300'}
+                  icon={Number(orderDetails.Details.Step)>0 ? check : null}
+                  title={"รับภารกิจโดย คุณ "+orderDetails.Activeby}
+                  description={orderDetails.Activeby === "-"? 'เวลา -':'เวลา '+orderDetails.Active_time}
+                  imgstep={telemedicine}
+                />
+                <StepItem
+                  color={Number(orderDetails.Details.Step)>1 ? 'green-500' : 'gray-300'}
+                  icon={Number(orderDetails.Details.Step)>1 ? check : null}
+                  title={"รับ ["+orderDetails.Details.PatientHN+"] คุณ "+orderDetails.Details.PatientName}
+                  description={'เวลา '+orderDetails.Pickup_time}
+                  imgstep={disabled}
+                />
+                <StepItem
+                  color={Number(orderDetails.Details.Step)>2 ? 'green-500' : 'gray-300'}
+                  icon={Number(orderDetails.Details.Step)>2 ? check : null}
+                  title={"ส่งผู้ป่วยที่ "+orderDetails.Details.Destination}
+                  description={'เวลา '+orderDetails.Delivery_time}
+                  imgstep={partnership}
+                />
+                <StepItem
+                  color={Number(orderDetails.Details.Step)>3 ? 'green-500' : 'gray-300'}
+                  icon={Number(orderDetails.Details.Step)>3 ? check : null}
+                  title="ส่งผู้ป่วยถึงจุดหมายเรียบร้อย"
+                  description="รอยืนยันจบภารกิจ"
+                  imgstep={commit}
+                />
+                
               </div>
             </div>
           </div>
         </div>
-      </li>
-    );
-  };
+      </div>
+    </>
+  );
+};
+
   
 
 export default ShopOrderTrackingModal;

@@ -13,7 +13,7 @@ import UserGroupIcon  from '@heroicons/react/24/outline/UserGroupIcon'
 import UsersIcon  from '@heroicons/react/24/outline/UsersIcon'
 import CircleStackIcon  from '@heroicons/react/24/outline/CircleStackIcon'
 import CreditCardIcon  from '@heroicons/react/24/outline/CreditCardIcon'
-import LeftSidebar from "./components/LeftSidebar"
+
 import { useEffect, useState ,useRef} from "react";
 import axios from 'axios';
 
@@ -54,7 +54,7 @@ function Dashboard() {
     <div className="drawer  lg:drawer-open">
       <input id="left-sidebar-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col ">
-          <Header />
+          
           <main className="flex-1 overflow-y-auto md:pt-4 pt-4 px-6  bg-base-200" ref={mainContentRef}>
             <div className="grid lg:grid-cols-4 mt-2 md:grid-cols-2 grid-cols-1 gap-6">
                         {
@@ -80,7 +80,7 @@ function Dashboard() {
           </main>
         
         </div>
-        <LeftSidebar/>
+        
     </div>
     
     

@@ -16,7 +16,7 @@ function getCurrentDateTime() {
   return now.toLocaleString('en-US', options);
 }
 
-function TopSideButtons({ onRefresh ,pokeTotal }) {
+function TopSideButtons({ onRefresh ,pokeTotal ,pokeStaff}) {
   const [openModel, setOpenModel] = useState(false);
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,8 +36,9 @@ function TopSideButtons({ onRefresh ,pokeTotal }) {
           body: {
             Case_id: `Mission-${parseInt(pokeTotal) + 1}`,
             Details: {
-              PatientName: form.patientFirstName+" "+form.patientLastName,
-              Service: form.service,
+              PatientHN: form.patientHN,
+              PatientName: form.patientName,
+              StaffRequire: form.staff,
               Priority: form.priority,
               StartPoint: form.startpoint.toUpperCase(),
               Destination: form.destination.toUpperCase(),
@@ -55,9 +56,9 @@ function TopSideButtons({ onRefresh ,pokeTotal }) {
             CreatedAt: dateTime,
             Timestamp: dateTime,
             Activeby: '-',
-            Activetime: '-',
-            Starttime: '-',
-            Finishtime: '-',
+            Active_time: '-',
+            Pickup_time: '-',
+            Delivery_time: '-',
             Status: 'Available',
           },
         }
@@ -81,7 +82,7 @@ function TopSideButtons({ onRefresh ,pokeTotal }) {
         className="btn px-6 btn-sm normal-case btn-primary"
         onClick={() => setOpenModel(true)}>เพิ่มภารกิจ
       </button>
-      <Modal open={openModel} onClose={() => setOpenModel(false)} onSubmit={handleSubmit}/>
+      <Modal open={openModel} onClose={() => setOpenModel(false)} onSubmit={handleSubmit} pokeStaff={pokeStaff}/>
     </div>
   );
 }
