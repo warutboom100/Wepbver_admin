@@ -100,7 +100,7 @@ function Activities() {
                   </button>
                 )}
 
-                <div className="dropdown dropdown-bottom dropdown-end" style={{ zIndex: '1000' }}> {/* กำหนด z-index ที่สูงกว่า */}
+                <div className="dropdown dropdown-bottom dropdown-end" style={{ zIndex: '10' }}> {/* กำหนด z-index ที่สูงกว่า */}
                     <label tabIndex={0} className="btn btn-sm btn-outline"><FunnelIcon className="w-5 mr-2" />กรองข้อมูล</label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 text-sm shadow bg-base-100 rounded-box w-52">
                         {
@@ -145,7 +145,7 @@ function Activities() {
                 <th>เวลารับภารกิจ</th>
                 <th>เวลารับผู้ป่วย</th>
                 <th>เวลาส่งผู้ป่วย</th>
-                <th>หมายเหตุ</th>
+                <th>หมายเหตุยกเลิก</th>
               </tr>
             </thead>
             <tbody>
@@ -164,11 +164,11 @@ function Activities() {
                   </div>
                 </td>
                 <td>{object.Case_id}</td>
-                <td>{object.Details.Destination}</td>
+                <td>{(object.Details.Destination.length > 30 ? `${object.Details.Destination.slice(0, 30)}...` : object.Details.Destination)}</td>
                 <td>{object.Active_time}</td>
                 <td>{object.Pickup_time}</td>
                 <td>{object.Delivery_time}</td>
-                <td></td>
+                <td>{object.Declined}</td>
               </tr>
             ))}
           </tbody>

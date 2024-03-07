@@ -41,7 +41,15 @@ function Dashboard() {
           }
         }
         loadPoke();
-        return () => abortController.abort();
+        const interval = setInterval(() => {
+          loadPoke();
+          
+          
+        }, 10000);
+
+        return () => {
+          clearInterval(interval);
+        };
     }, []);
   const statsData = [
     {title : "เจ้าหน้าที่พร้อมทำงาน", value : poke.DashboardStats?.AvailableUsers || 0, icon : <UserGroupIcon className='w-8 h-8'/>, description :" จากทั้งหมด "+poke.DashboardStats?.totalUsers},
@@ -73,10 +81,11 @@ function Dashboard() {
                 <AmountStats availableUsers={poke.AmountStats?.UserTopScore} Score={poke.AmountStats?.Score}/>
                 <PageStats Pop={poke.PageStats?.PopularLocation} Used={poke.PageStats?.Totalused}/>
             </div>
-            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-                <UserChannels User ={poke.UserChannels}/>
-                <DoughnutChart Donut ={poke.DoughnutChart}/>
+            <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6 overflow-auto ">
+                <UserChannels User={poke.UserChannels} />
+                <DoughnutChart Donut={poke.DoughnutChart} />
             </div>
+
           </main>
         
         </div>

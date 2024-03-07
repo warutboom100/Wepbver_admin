@@ -11,13 +11,13 @@ const StepItem = ({ color, icon, title, description ,imgstep}) => (
   <div className={`flex md:contents`}>
     <div className={`col-start-2 col-end-4 mr-10 md:mx-auto relative`}>
       <div className={`h-full w-6 flex items-center justify-center`}>
-        <div className={`h-full w-1 bg-${color} pointer-events-none`}></div>
+        <div className={`h-full w-1 ${color === 'green-500' ? 'bg-green-500' : 'bg-gray-300'} pointer-events-none`}></div>
       </div>
-      <div className={`w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-${color} shadow text-center`}>
+      <div className={`w-6 h-6 absolute top-1/2 -mt-3 rounded-full ${color === 'green-500' ? 'bg-green-500' : 'bg-gray-300'} shadow text-center`}>
         <img src={icon}></img>
       </div>
     </div>
-    <div className={`bg-${color} col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full flex items-center`}>
+    <div className={`bg-${color === 'green-500' ? 'green-500' : 'gray-300'} col-start-4 col-end-12 p-4 rounded-xl my-4 mr-auto shadow-md w-full flex items-center`}>
       <img src={imgstep} className="mr-4" style={{ width: '48px', height: '48px' }} alt="icon" />
       <div>
         <h3 className={`font-semibold text-lg mb-1`}>{title}</h3>
@@ -48,7 +48,7 @@ const ShopOrderTrackingModal = ({ onClose, orderDetails }) => {
                 <StepItem
                   color={Number(orderDetails.Details.Step)>1 ? 'green-500' : 'gray-300'}
                   icon={Number(orderDetails.Details.Step)>1 ? check : null}
-                  title={"รับ ["+orderDetails.Details.PatientHN+"] คุณ "+orderDetails.Details.PatientName}
+                  title={"รับคุณ ["+orderDetails.Details.PatientHN+"]"+orderDetails.Details.PatientName}
                   description={'เวลา '+orderDetails.Pickup_time}
                   imgstep={disabled}
                 />

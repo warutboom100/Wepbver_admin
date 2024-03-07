@@ -17,10 +17,10 @@ function Booking() {
   const [IndexData, setIndexData] = useState(0);
   const mainContentRef = useRef(null);
   const getDummyStatus = (index) => {
-        if(index === "Available")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-light text-gray-600">รอรับงาน</div>
-        else if(index === "In Progress")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-blue-600 text-white dark:bg-blue-500">กำลังดำเนินการ</div>
-        else if(index  === "Completed")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-teal-500 text-white">งานเสร็จสิ้น</div>
-        else if(index  === "Declined")return <div className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xm font-medium bg-gray-800 text-white dark:bg-white dark:text-gray-800">ยกเลิกงาน</div>
+        if(index === "Available")return <div className="inline-flex items-center py-1.2 px-2 rounded-full text-xm font-medium bg-light text-gray-600">รอรับงาน</div>
+        else if(index === "In Progress")return <div className="inline-flex items-center py-1.2 px-2 rounded-full text-xm font-medium bg-blue-600 text-white dark:bg-blue-500">กำลังดำเนินการ</div>
+        else if(index  === "Completed")return <div className="inline-flex items-center py-1.2 px-2 rounded-full text-xm font-medium bg-teal-500 text-white">งานเสร็จสิ้น</div>
+        else if(index  === "Declined")return <div className="inline-flex items-center py-1.2 px-2 rounded-full text-xm font-medium bg-gray-800 text-white dark:bg-white dark:text-gray-800">ยกเลิกงาน</div>
         else return <div className="badge badge-ghost">Loading...</div>
   }
   const title_equ = (equipments) =>{
@@ -131,7 +131,7 @@ function Booking() {
                           </div>
                         </div>
                         </td>
-                        <td>{object.Details.StartPoint+" → "+object.Details.Destination}</td>
+                        <td>{(object.Details.StartPoint.length > 30 ? `${object.Details.StartPoint.slice(0, 30)}...` : object.Details.StartPoint) + " → " + (object.Details.Destination.length > 30 ? `${object.Details.Destination.slice(0, 30)}...` : object.Details.Destination)}</td>
                         <td>{"["+object.Details.PatientHN+"] "+object.Details.PatientName}</td>
                         <td>{title_equ(object.Equipments)}</td>
                         <td>{object.Timestamp}</td>

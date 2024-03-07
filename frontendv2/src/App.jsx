@@ -12,6 +12,7 @@ const token = checkAuth();
 const checkToken = (tokens) => {
   
   if (tokens === "DumyTokenHere") {
+    
     return <Layout />;
   } else {
     
@@ -23,8 +24,8 @@ export default function App() {
   return (
     <>
       <div className="App">
-        <Layout />
-        {/* {checkToken(token)} */}
+        {/* <Layout /> */}
+        {checkToken(token)}
       </div>
     </>
   );

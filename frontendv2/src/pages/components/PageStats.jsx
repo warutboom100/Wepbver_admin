@@ -11,8 +11,7 @@ function PageStats({ Pop ,Used}){
         <HeartIcon className='w-8 h-8'/>
     </div>
     <div className="stat-title">สถานที่ยอดฮิต</div>
-    <div className="stat-value">{Pop}</div>
-    <div className="stat-desc">-</div>
+    <div className="stat-value" style={{ fontSize: '20px'}}>{Pop}</div>
   </div>
   
   <div className="stat">

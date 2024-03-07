@@ -22,7 +22,7 @@ function LeftSidebar() {
     <>
       <div className={`drawer-side z-30 ${isOpen ? 'active' : ''}`}>
         <label htmlFor="left-sidebar-drawer" className={`drawer-overlay ${isOpen ? 'active' : ''}`}></label>
-        <ul className={`menu pt-2 w-80 bg-base-100 min-h-full text-base-content ${isOpen ? 'open' : ''}`}>
+        <ul className={`menu pt-2 w-50 bg-base-100 min-h-full text-base-content ${isOpen ? 'open' : ''}`}>
           <button className="btn btn-ghost bg-base-300 btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden" onClick={toggleSidebar}>
             <XMarkIcon className="h-5 w-5 inline-block" />
           </button>

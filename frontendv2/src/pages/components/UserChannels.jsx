@@ -5,7 +5,11 @@ import React from 'react';
 
 
 function UserChannels({User}){
-    
+    const getDummyStatus = (index) => {
+        if(index === "Available")return <div className="inline-flex items-center py-1.2 px-2 rounded-full text-xm font-medium bg-blue-400 text-white">รองาน</div>
+        else if(index === "Active")return <div className="inline-flex items-center py-1.2 px-2  rounded-full text-xm font-medium bg-red-600 text-white dark:bg-blue-500">กำลังทำงาน</div>
+        else return <div className="badge badge-ghost">Loading...</div>
+  }
     return(
         <TitleCard title={"สถานะของเจ้าหน้าที่"}>
              {/** Table Data */}
@@ -16,7 +20,7 @@ function UserChannels({User}){
                         <th></th>
                         <th className="normal-case">ชื่อเจ้าหน้าที่</th>
                         <th className="normal-case">สถานะ</th>
-                        <th className="normal-case">สถานที่ล่าสุด</th>
+                        <th className="normal-case">เวลางานล่าสุด</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,8 +41,8 @@ function UserChannels({User}){
                           </div>
                         </td>
                         
-                        <td>{object.Status}</td>
-                        <td>{object.Location}</td>
+                        <td>{getDummyStatus(object.Status)}</td>
+                        <td>{object.Timestamp}</td>
                   
                 </tr>
               ))}

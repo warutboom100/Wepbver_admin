@@ -35,6 +35,7 @@ function TopSideButtons({ onRefresh ,pokeTotal ,pokeStaff}) {
           type: 'Create',
           body: {
             Case_id: `Mission-${parseInt(pokeTotal) + 1}`,
+            Declined: "-",
             Details: {
               PatientHN: form.patientHN,
               PatientName: form.patientName,

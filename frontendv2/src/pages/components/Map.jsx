@@ -74,18 +74,18 @@ function Map({ orderData }) {
 
   return (
     <TitleCard title="ติดตามสถานะภารกิจ" topMargin="mt-2">
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-3 gap-4 overflow-auto max-h-[400px]">
         {orderData ? (
           orderData.map((room) => (
             <div
               key={room.id}
-              className={`p-4 border cursor-pointer ${selectedRoom === room.Details.StartPoint ? 'bg-blue-200' : ''}`}
-              style={{ backgroundColor: getBackgroundColor(room.Details.Step,room.Activeby) }}
+              className={`p-4 border cursor-pointer flex flex-col justify-center items-center ${selectedRoom === room.Details.StartPoint ? 'bg-blue-200' : ''}`}
+              style={{ backgroundColor: getBackgroundColor(room.Details.Step, room.Activeby) }}
               onClick={() => handleRoomClick(room.Details.StartPoint, room)}
               onMouseEnter={() => handleMouseEnter(room.Details.StartPoint)}
               onMouseLeave={handleMouseLeave}
             >
-              <p className="text-lg font-semibold">{room.Case_id}</p>
+              <p className="text-lg font-semibold text-center">{room.Case_id}</p>
               <p className={`text-sm ${room.Details.Priority === 'Occupied' ? 'text-red-500' : 'text-white'}`}>
                 {room.Details.Destination}
               </p>
@@ -98,6 +98,7 @@ function Map({ orderData }) {
           <p>Loading...</p>
         )}
       </div>
+
       {showModal && (
         <ShopOrderTrackingModal onClose={closeModal} orderDetails={selectedOrder} />
       )}

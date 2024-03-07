@@ -10,8 +10,8 @@ const Modal = ({ open, onClose, onSubmit,pokeStaff }) => {
     patientName: '',
     staff: '-',
     priority: 'ฉุกเฉิน',
-    startpoint: 'จุดรวมพลชั้น1',
-    destination: 'จุดรวมพลชั้น1',
+    startpoint: 'ชั้นB3 ห้องตรวจโรคเวชศาสตร์ครอบครัว',
+    destination: 'ชั้นB3 ห้องตรวจโรคเวชศาสตร์ครอบครัว',
     note: '',
     stretcher1: false,
     staff1: false,
@@ -25,8 +25,8 @@ const Modal = ({ open, onClose, onSubmit,pokeStaff }) => {
     patientName: '',
     staff: '-',
     priority: 'ฉุกเฉิน',
-    startpoint: 'จุดรวมพลชั้น1',
-    destination: 'จุดรวมพลชั้น1',
+    startpoint: 'ชั้นB3 ห้องตรวจโรคเวชศาสตร์ครอบครัว',
+    destination: 'ชั้นB3 ห้องตรวจโรคเวชศาสตร์ครอบครัว',
     note: '',
     stretcher1: false,
     staff1: false,
@@ -122,14 +122,52 @@ const Modal = ({ open, onClose, onSubmit,pokeStaff }) => {
             </label>
             {/* <input type="text" placeholder="ต้นทาง"  name="startpoint" value={formData.startpoint} onChange={handleChange} className="input input-bordered input-info w-full max-w-md" /> */}
             <select className="select select-bordered select-info" name="startpoint" value={formData.startpoint} onChange={handleChange}>
-              <option>จุดรวมพลชั้น1</option>
-              <option>ห้องผ่าตัด1</option>
-              <option>ห้องผ่าตัด2</option>
-              <option>ห้องผ่าตัด3</option>
-              <option>ห้องผ่าตัดตา3</option>
-              <option>ห้องพักฟื้น RR พร</option>
-              <option>ห้องพักฟื้น RR มว</option>
-              <option>วอร์ด1</option>
+              <option>ชั้นB3 ห้องตรวจโรคเวชศาสตร์ครอบครัว</option>
+              <option>ชั้นB3 ห้องตรวจสุขภาพผู้สูงอายุ</option>
+              <option>ชั้นB3 ห้องตรวจประสาทวิทยา</option>
+              <option>ชั้นB3 คลินิกกู้ใจ</option>
+              <option>ชั้นB3 ห้องตรวจนิติเวช</option>
+              <option>ชั้นB3 ห้องตรวจเวชกรรมฟื้นฟูและคลินิกฝังเข็ม</option>
+
+              <option>ชั้นB2 ห้องตรวจออโธปิดิกส์</option>
+              <option>ชั้นB2 จุดเจาะเลือด</option>
+              <option>ชั้นB2 X - RAY</option>
+              
+              <option>ชั้นB1 ห้องตรวจทันตกรรม</option>
+
+              <option>ชั้นG จุดคัดกรองทีปังกร</option>
+              <option>ชั้นG ศูนย์รับผู้ป่วยใน</option>
+              <option>ชั้นG จุดเจาะเลือด</option>
+              <option>ชั้นG ห้องจ่ายยา</option>
+              <option>ชั้นG ประชาสัมพันธ์</option>
+              <option>ชั้นG ARI</option>
+
+              <option>ชั้นM งานจัดเก็บรายได้</option>
+
+              <option>ชั้น2 ห้องตรวจนรีเวชกรรม</option>
+              <option>ชั้น2 ห้องตรวจส่งเสริมสุขภาพสตรี</option>
+              <option>ชั้น2 ห้องตรวจอัลตร้าซาวน์สูติกรรม</option>
+              <option>ชั้น2 ศูนย์ตรวจสุขภาพวชิรพยาบาล</option>
+              <option>ชั้น2 ห้องตรวจครรภ์</option>
+
+              <option>ชั้น3 ห้องตรวจอายุรกรรม</option>
+              <option>ชั้น3 ห้องตรวจต่อมไร้ท่อและเมตาบอริสึม</option>
+              <option>ชั้น3 ห้องตรวจโรคติดเชื้อ</option>
+              <option>ชั้น3 ห้องตรวจมะเร็งวิทยา</option>
+              <option>ชั้น3 ห้องตรวจตจวิทยา</option>
+
+              <option>ชั้น4 ห้องตรวจศัลยกรรม</option>
+              <option>ชั้น4 ศูนย์ออสโตมีและบาดแผล</option>
+              <option>ชั้น4 ห้องตรวจกุมารเวชกรรม</option>
+              <option>ชั้น4 คลินิกพัฒนาการเด็กและวัยรุ่น</option>
+
+              <option>ชั้น5 ห้องตรวจจักษุ</option>
+              <option>ชั้น5 ห้องตรวจหู คอ จมูก</option>
+              
+              <option>ชั้น6 ห้องประชุม 1</option>
+              <option>ชั้น6 ห้องประชุม 2</option>
+
+
             </select>
           </div>
 
@@ -141,14 +179,50 @@ const Modal = ({ open, onClose, onSubmit,pokeStaff }) => {
             </label>
             {/* <input type="text" placeholder="ปลายทาง" name="destination" value={formData.destination} onChange={handleChange} className="input input-bordered input-info w-full max-w-md" /> */}
             <select className="select select-bordered select-info" name="destination" value={formData.destination} onChange={handleChange}>
-              <option>จุดรวมพลชั้น1</option>
-              <option>ห้องผ่าตัด1</option>
-              <option>ห้องผ่าตัด2</option>
-              <option>ห้องผ่าตัด3</option>
-              <option>ห้องผ่าตัดตา3</option>
-              <option>ห้องพักฟื้น RR พร</option>
-              <option>ห้องพักฟื้น RR มว</option>
-              <option>วอร์ด1</option>
+              <option>ชั้นB3 ห้องตรวจโรคเวชศาสตร์ครอบครัว</option>
+              <option>ชั้นB3 ห้องตรวจสุขภาพผู้สูงอายุ</option>
+              <option>ชั้นB3 ห้องตรวจประสาทวิทยา</option>
+              <option>ชั้นB3 คลินิกกู้ใจ</option>
+              <option>ชั้นB3 ห้องตรวจนิติเวช</option>
+              <option>ชั้นB3 ห้องตรวจเวชกรรมฟื้นฟูและคลินิกฝังเข็ม</option>
+
+              <option>ชั้นB2 ห้องตรวจออโธปิดิกส์</option>
+              <option>ชั้นB2 จุดเจาะเลือด</option>
+              <option>ชั้นB2 X - RAY</option>
+              
+              <option>ชั้นB1 ห้องตรวจทันตกรรม</option>
+
+              <option>ชั้นG จุดคัดกรองทีปังกร</option>
+              <option>ชั้นG ศูนย์รับผู้ป่วยใน</option>
+              <option>ชั้นG จุดเจาะเลือด</option>
+              <option>ชั้นG ห้องจ่ายยา</option>
+              <option>ชั้นG ประชาสัมพันธ์</option>
+              <option>ชั้นG ARI</option>
+
+              <option>ชั้นM งานจัดเก็บรายได้</option>
+
+              <option>ชั้น2 ห้องตรวจนรีเวชกรรม</option>
+              <option>ชั้น2 ห้องตรวจส่งเสริมสุขภาพสตรี</option>
+              <option>ชั้น2 ห้องตรวจอัลตร้าซาวน์สูติกรรม</option>
+              <option>ชั้น2 ศูนย์ตรวจสุขภาพวชิรพยาบาล</option>
+              <option>ชั้น2 ห้องตรวจครรภ์</option>
+
+              <option>ชั้น3 ห้องตรวจอายุรกรรม</option>
+              <option>ชั้น3 ห้องตรวจต่อมไร้ท่อและเมตาบอริสึม</option>
+              <option>ชั้น3 ห้องตรวจโรคติดเชื้อ</option>
+              <option>ชั้น3 ห้องตรวจมะเร็งวิทยา</option>
+              <option>ชั้น3 ห้องตรวจตจวิทยา</option>
+
+              <option>ชั้น4 ห้องตรวจศัลยกรรม</option>
+              <option>ชั้น4 ศูนย์ออสโตมีและบาดแผล</option>
+              <option>ชั้น4 ห้องตรวจกุมารเวชกรรม</option>
+              <option>ชั้น4 คลินิกพัฒนาการเด็กและวัยรุ่น</option>
+
+              <option>ชั้น5 ห้องตรวจจักษุ</option>
+              <option>ชั้น5 ห้องตรวจหู คอ จมูก</option>
+              
+              <option>ชั้น6 ห้องประชุม 1</option>
+              <option>ชั้น6 ห้องประชุม 2</option>
             </select>
           </div> 
         </div>

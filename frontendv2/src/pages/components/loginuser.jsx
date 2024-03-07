@@ -26,7 +26,7 @@ function Login(){
         
         if(loginObj.emailId.trim() === "admin1234" && loginObj.password.trim() === "admin5678"){
             setLoading(true)
-            // Call API to check user credentials and save token in localstorage
+        
             localStorage.setItem("token", "DumyTokenHere")
             setLoading(false)
             window.location.href = '/app/dashboard'
